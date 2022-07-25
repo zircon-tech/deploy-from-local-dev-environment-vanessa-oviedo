@@ -1,47 +1,33 @@
 ## Unit 3: Ethereum | Local Development Environments -English Version- 🚀
 
-### What's this project about?
+### Save people array! 
 
-Write a simple smart contract, for example a contract to store a string as a message,
-test first in local development environment, we encourage you to use (Hardhat or Truffle)
-however, if you want you can try other options, here all the options [Ethereum local development environments](https://ethereum.org/en/developers/local-environment/)
-and then deploy to any Ethereum testnet.
+This smart contract will allow you to store and retrieve a person name and favorite number
 
-#### Requirements 
+Please use the methods: 
 
-- Use any Ethereum Local development environment to deploy your contract. 
-- Upload to this repo the configuration of your local environment. 
-- Update this README with a brief explanation of the project.   
-- Comment your code so your teammates at Zircon can understand it. 
-- Use external libraries if you want. 
+1) store(string,uint256) : Call this method to store the persona name and favorite number as parameters. For instance: store('Vanessa',150). The smart contract stores an array of people, so you can call this method several times.
 
-### List of resources
+2) searchFavoriteNumberPerPerson(string) : Call this method to retrieve the favorite number of a given person by name. For instance: searchFavoriteNumberPerPerson('Vanessa') will return 150.
 
-#### General
+3) retrieve(uint256) : Call this method to retrieve person data by index. For instance, if the first person you store is 'Vanessa', then calling retrieve(0) will return (name:'Vanessa', favoriteNumber: 150)
 
-- If you use [Truffle](https://trufflesuite.com/truffle/)
-- If you use [Hardhat](https://hardhat.org/)
+### Deployment
 
-## Unidad 3: Ethereum | Entornos de desarrollo locales -Versión en español- 🚀
+This smart contract is ment to be deployed in a ganache network: truffle-config.js looks like following: 
 
-### ¿De qué se trata este proyecto?
-
-Escribe un smart contract sencillo por ejemplo un contrato para almacenar un string como mensaje, 
-primero realiza una prueba en el entorno de desarrollo local te alentamos a usar (Hardhat o Truffle) 
-sin embargo, si deseas puedes intentar otras opciones, aqui todas las opciones [Entornos de desarrollo locales de Ethereum](https://ethereum.org/en/developers/local-environment/)
-y luego realiza el deploy a cualquier testnet de Ethereum. 
-
-#### Requisitos
-
-- Utiliza un entorno de desarrollo local para desplegar tu contrato. 
-- Sube a este repo la configuración del pryecto. 
-- Actualiza este README con una breve explicación del proyecto. 
-- Comenta tu código para que tus compañeros de Zircon puedan entenderlo.
-- Utiliza bibliotecas externas si quieres.
-
-### Lista de recursos
-
-#### General
-
-- Si usas [Truffle](https://trufflesuite.com/truffle/)
-- Si usas [Hardhat](https://hardhat.org/)
+module.exports = {
+  compilers: {
+    solc: {
+      version: "0.8.13",
+    }
+  },
+  networks: {
+    development: {
+      host: "127.0.0.1",
+      port: 7545,
+      network_id: "5777"
+    }
+  }
+};
+ 
